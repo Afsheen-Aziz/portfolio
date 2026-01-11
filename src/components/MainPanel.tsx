@@ -196,8 +196,8 @@ export default function MainPanel({ endpoint, onExecute, isExecuting }: MainPane
                             </section>
                         )}
 
-                        {/* Execute Button */}
-                        <div className="pt-4 flex flex-col md:flex-row items-center gap-4">
+                        {/* Execute Button - Desktop Version */}
+                        <div className="hidden md:flex pt-4 flex-col md:flex-row items-center gap-4">
                             <button
                                 onClick={onExecute}
                                 disabled={isExecuting}
@@ -222,6 +222,27 @@ export default function MainPanel({ endpoint, onExecute, isExecuting }: MainPane
                     </div>
                 </motion.div>
             </AnimatePresence>
+
+            {/* Mobile Sticky Button Bar */}
+            <div className="md:hidden sticky bottom-0 left-0 right-0 p-4 bg-background/60 backdrop-blur-xl border-t border-white/5 z-20">
+                <button
+                    onClick={onExecute}
+                    disabled={isExecuting}
+                    className={cn(
+                        "w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-sm transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-2xl",
+                        endpoint.method === 'GET'
+                            ? "bg-accent-get text-white shadow-accent-get/20"
+                            : "bg-accent-post text-white shadow-accent-post/20"
+                    )}
+                >
+                    {isExecuting ? (
+                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    ) : (
+                        <Play className="w-4 h-4 fill-current" />
+                    )}
+                    {isExecuting ? 'Requesting...' : 'Execute Full Endpoint'}
+                </button>
+            </div>
         </div>
     );
 }
