@@ -223,22 +223,22 @@ export default function MainPanel({ endpoint, onExecute, isExecuting }: MainPane
                 </motion.div>
             </AnimatePresence>
 
-            {/* Mobile Sticky Button Bar */}
-            <div className="md:hidden sticky bottom-0 left-0 right-0 p-4 bg-background/60 backdrop-blur-xl border-t border-white/5 z-20">
+            {/* Mobile Sticky Button Bar - Scaled down for better visibility of content */}
+            <div className="md:hidden sticky bottom-0 left-0 right-0 p-2.5 bg-background/80 backdrop-blur-xl border-t border-white/5 z-20">
                 <button
                     onClick={onExecute}
                     disabled={isExecuting}
                     className={cn(
-                        "w-full flex items-center justify-center gap-3 py-4 rounded-xl font-bold text-sm transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-2xl",
+                        "w-full flex items-center justify-center gap-2.5 py-2.5 rounded-xl font-bold text-xs transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-xl",
                         endpoint.method === 'GET'
-                            ? "bg-accent-get text-white shadow-accent-get/20"
-                            : "bg-accent-post text-white shadow-accent-post/20"
+                            ? "bg-accent-get text-white"
+                            : "bg-accent-post text-white"
                     )}
                 >
                     {isExecuting ? (
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     ) : (
-                        <Play className="w-4 h-4 fill-current" />
+                        <Play className="w-3.5 h-3.5 fill-current" />
                     )}
                     {isExecuting ? 'Requesting...' : 'Execute Full Endpoint'}
                 </button>
