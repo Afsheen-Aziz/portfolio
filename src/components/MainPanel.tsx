@@ -223,22 +223,22 @@ export default function MainPanel({ endpoint, onExecute, isExecuting }: MainPane
                 </motion.div>
             </AnimatePresence>
 
-            {/* Mobile Sticky Button Bar - Scaled down for better visibility of content */}
-            <div className="md:hidden sticky bottom-0 left-0 right-0 p-2.5 bg-background/80 backdrop-blur-xl border-t border-white/5 z-20">
+            {/* Mobile Sticky Button Bar - Drastically reduced footprint */}
+            <div className="md:hidden sticky bottom-0 left-0 right-0 p-1.5 bg-black/40 backdrop-blur-md border-t border-white/5 z-20">
                 <button
                     onClick={onExecute}
                     disabled={isExecuting}
                     className={cn(
-                        "w-full flex items-center justify-center gap-2.5 py-2.5 rounded-xl font-bold text-xs transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-xl",
+                        "w-full flex items-center justify-center gap-2 py-1.5 rounded-lg font-bold text-[10px] transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed",
                         endpoint.method === 'GET'
-                            ? "bg-accent-get text-white"
-                            : "bg-accent-post text-white"
+                            ? "bg-accent-get/90 text-white"
+                            : "bg-accent-post/90 text-white"
                     )}
                 >
                     {isExecuting ? (
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     ) : (
-                        <Play className="w-3.5 h-3.5 fill-current" />
+                        <Play className="w-3 h-3 fill-current" />
                     )}
                     {isExecuting ? 'Requesting...' : 'Execute Full Endpoint'}
                 </button>

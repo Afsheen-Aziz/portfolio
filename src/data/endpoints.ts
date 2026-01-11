@@ -35,7 +35,7 @@ export const endpoints: Endpoint[] = [
     intro: {
       title: "Afsheen Aziz",
       subtitle: "Backend & AI/ML Explorer",
-      content: "Learning to build robust digital experiences by combining modern web technologies with intelligent data models. Currently focused on mastering the backend and exploring the endless possibilities of Machine Learning.\n\nCurious by nature. Developer by choice. Problem solver by habit."
+      content: "Learning to build robust digital experiences by combining modern web technologies with intelligent data models. Currently focused on mastering the backend and exploring the endless possibilities of artificial intelligence and machine learning."
     },
     links: [
       { label: 'Download Resume', url: 'https://drive.google.com/file/d/1jcH-D_4YXrS6nQ4ZtEizM0j2yxK7Ohd6/view?usp=sharing', type: 'resume' },
