@@ -110,24 +110,47 @@ export const endpoints: Endpoint[] = [
     }
   },
   {
-    id: 'get-project-auth',
-    path: '/projects/auth-service',
+    id: 'get-project-codevista',
+    path: '/projects/codevista',
     method: 'GET',
-    label: 'Alpha-Auth Details',
-    description: 'Get details for the Auth Service project.',
+    label: 'CodeVista Details',
+    description: 'Smart Lab Management.',
     group: 'Projects',
+    intro: {
+      title: "CodeVista",
+      subtitle: "Smart Lab Management",
+      content: "An intelligent web-based platform designed to modernize coding lab workflows by combining automation, online code execution, visual learning tools, and AI-assisted evaluation for students and instructors."
+    },
     links: [
-      { label: 'View on GitHub', url: 'https://github.com/Afsheen-Aziz/auth-service', type: 'github' }
+      { label: 'View on GitHub', url: 'https://github.com/Afsheen-Aziz/lab_management_app', type: 'github' }
     ],
     response: {
-      type: "Backend API",
-      stack: ["FastAPI", "PostgreSQL", "JWT"],
-      features: [
-        "Secure authentication",
-        "Role-based access",
-        "Token refresh"
+      id: "codevista",
+      status: "active_development",
+      overview: "A smart ecosystem for digitalizing programming labs with AI evaluation and logic visualization.",
+      stack: [
+        "Next.js",
+        "React",
+        "Supabase",
+        "Compiler API"
       ],
-      github_url: "https://github.com/Afsheen-Aziz/auth-service"
+      features: {
+        instructor: [
+          "Lab provisioning",
+          "Real-time monitoring",
+          "Automated evaluation"
+        ],
+        student: [
+          "In-browser IDE",
+          "Algorithm visualizer",
+          "Instant submission"
+        ],
+        ai_layer: [
+          "Plagiarism detection",
+          "Code quality scoring"
+        ]
+      },
+      links: "https://github.com/Afsheen-Aziz/lab_management_app"
     }
   },
   {
