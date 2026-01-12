@@ -362,7 +362,6 @@ export const endpoints: Endpoint[] = [
         { label: "MOOC", value: "NPTEL: Adv. Distributed Systems (Elite+Silver)" },
         { label: "Hackathon", value: "HackGenAI Finalist (Top 25)" },
         { label: "Membership", value: "ACES Tech Team Member" },
-        { label: "Professional", value: "IGBC Professional Member" },
         { label: "Cloud", value: "Google Cloud: Prompt Design & Vertex AI" }
       ]
     },
