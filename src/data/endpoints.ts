@@ -119,7 +119,7 @@ export const endpoints: Endpoint[] = [
     intro: {
       title: "Unos.ai",
       subtitle: "Software Development Intern",
-      content: "Building core modules for Hospital Management Systems and integrating complex ERP frameworks.",
+      content: "Building core modules for Hospital Management Systems, integrating ERP frameworks, and exploring ML workflows for healthcare data.",
       highlights: [
         { label: "Frontend", value: "React.js" },
         { label: "Platform", value: "Frappe / ERPNext" },
