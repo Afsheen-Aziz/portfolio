@@ -59,17 +59,17 @@ export default function MainPanel({ endpoint, onExecute, isExecuting }: MainPane
                 {/* Content Section (Integrated under header) */}
                 {endpoint.intro && (
                     <section className="space-y-4 pt-2">
-                        <div className="space-y-1">
-                            <h1 className="text-xl md:text-2xl font-extrabold tracking-tight text-white/90">
+                        <div className="space-y-2">
+                            <h1 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white">
                                 {endpoint.intro.title}
                             </h1>
-                            <p className="text-sm md:text-base text-accent-get font-medium opacity-90">
+                            <p className="text-base md:text-lg text-accent-get font-semibold">
                                 {endpoint.intro.subtitle}
                             </p>
                         </div>
 
                         {endpoint.intro?.content && (
-                            <p className="text-slate-400 text-sm leading-relaxed max-w-2xl">
+                            <p className="text-slate-300 text-base md:text-lg leading-relaxed max-w-3xl">
                                 {endpoint.intro.content}
                             </p>
                         )}
@@ -124,13 +124,13 @@ export default function MainPanel({ endpoint, onExecute, isExecuting }: MainPane
                 )}
 
                 {/* Technical Parameters */}
-                <div className="pt-4 space-y-8">
+                <div className="pt-8 space-y-8 opacity-70 hover:opacity-100 transition-opacity duration-300">
                     <div className="relative">
                         <div className="absolute inset-0 flex items-center" aria-hidden="true">
-                            <div className="w-full border-t border-slate-800"></div>
+                            <div className="w-full border-t border-slate-800/50"></div>
                         </div>
                         <div className="relative flex justify-start">
-                            <span className="bg-background pr-3 text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                            <span className="bg-background pr-3 text-[9px] font-mono text-slate-600 uppercase tracking-widest">
                                 Request Specification
                             </span>
                         </div>
@@ -138,12 +138,12 @@ export default function MainPanel({ endpoint, onExecute, isExecuting }: MainPane
 
                     {/* Parameters Section */}
                     <section className="space-y-4">
-                        <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                        <h3 className="text-[9px] font-bold text-slate-600 uppercase tracking-widest">
                             Request Parameters
                         </h3>
-                        <div className="border border-slate-800/60 rounded-xl overflow-hidden overflow-x-auto bg-card/30">
-                            <table className="w-full text-[12px] text-left">
-                                <thead className="bg-slate-800/40 text-slate-400 border-b border-slate-800/60">
+                        <div className="border border-slate-800/40 rounded-xl overflow-hidden overflow-x-auto bg-card/30">
+                            <table className="w-full text-[11px] text-left">
+                                <thead className="bg-slate-800/40 text-slate-500 border-b border-slate-800/60">
                                     <tr>
                                         <th className="px-4 py-2 font-semibold">Name</th>
                                         <th className="px-4 py-2 font-semibold">Location</th>
