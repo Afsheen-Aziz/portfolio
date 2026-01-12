@@ -129,9 +129,13 @@ export default function Home() {
       </AnimatePresence>
 
       <main className="flex-1 flex flex-col lg:flex-row pt-16 lg:pt-0 overflow-hidden relative">
-        <div className="flex-1 overflow-y-auto scroll-smooth scrollbar-hide pb-32">
+        <div className="flex-1 overflow-y-auto scroll-smooth scrollbar-hide pb-32 snap-y snap-mandatory">
           {endpoints.map((endpoint) => (
-            <div key={endpoint.id} id={endpoint.id} className="min-h-fit border-b border-white/5 last:border-0 py-12 lg:py-20 scroll-mt-16 lg:scroll-mt-0">
+            <div
+              key={endpoint.id}
+              id={endpoint.id}
+              className="min-h-[70vh] lg:min-h-screen border-b border-white/5 last:border-0 py-12 lg:py-20 scroll-mt-16 lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
+            >
               <MainPanel
                 endpoint={endpoint}
                 onExecute={() => handleExecute(endpoint.id)}
