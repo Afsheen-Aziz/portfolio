@@ -79,10 +79,47 @@ export default function Home() {
     setIsMobileMenuOpen(false);
   };
 
+  const [consoleSize, setConsoleSize] = useState({ width: 450, height: 300 }); // Desktop width, Mobile height
+  const [isResizing, setIsResizing] = useState(false);
+
+  // Resize handler for Terminal
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
+      if (!isResizing) return;
+
+      const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
+
+      if (window.innerWidth >= 1024) { // Desktop Width
+        const newWidth = window.innerWidth - clientX;
+        setConsoleSize(prev => ({ ...prev, width: Math.max(300, Math.min(newWidth, window.innerWidth * 0.6)) }));
+      } else { // Mobile Height
+        const newHeight = window.innerHeight - clientY;
+        setConsoleSize(prev => ({ ...prev, height: Math.max(150, Math.min(newHeight, window.innerHeight * 0.8)) }));
+      }
+    };
+
+    const handleMouseUp = () => setIsResizing(false);
+
+    if (isResizing) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchmove', handleMouseMove);
+      window.addEventListener('touchend', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchmove', handleMouseMove);
+      window.removeEventListener('touchend', handleMouseUp);
+    };
+  }, [isResizing]);
+
   const activeState = executionStates[activeId] || { response: null, status: null, time: null, isExecuting: false };
 
   return (
-    <div className="flex h-screen bg-background overflow-hidden relative">
+    <div className="flex h-screen bg-background overflow-hidden relative select-none">
       {/* Mobile Header */}
       <div className="lg:hidden absolute top-0 left-0 right-0 h-16 border-b border-white/5 bg-background/80 backdrop-blur-xl z-50 flex items-center justify-between px-6">
         <div className="flex items-center gap-2">
@@ -134,7 +171,7 @@ export default function Home() {
             <div
               key={endpoint.id}
               id={endpoint.id}
-              className="min-h-[70vh] lg:min-h-screen border-b border-white/5 last:border-0 py-12 lg:py-20 scroll-mt-16 lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
+              className="min-h-[70vh] lg:min-h-screen border-b border-white/5 last:border-0 py-12 lg:py-20 scroll-mt-[100px] lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
             >
               <MainPanel
                 endpoint={endpoint}
@@ -146,12 +183,19 @@ export default function Home() {
         </div>
 
         {/* Console / Response Panel */}
-        <div className="h-[40vh] lg:h-full lg:w-[450px] border-t lg:border-t-0 lg:border-l border-white/5 bg-card/5 backdrop-blur-xl shrink-0">
+        <div
+          style={{
+            height: window.innerWidth < 1024 ? `${consoleSize.height}px` : '100%',
+            width: window.innerWidth >= 1024 ? `${consoleSize.width}px` : '100%'
+          }}
+          className="relative border-t lg:border-t-0 lg:border-l border-white/5 bg-card/5 backdrop-blur-xl shrink-0 transition-[height,width] duration-75 ease-out"
+        >
           <ResponsePanel
             response={activeState.response}
             status={activeState.status}
             time={activeState.time}
             activeEndpointLabel={endpoints.find(e => e.id === activeId)?.label}
+            onResizeStart={() => setIsResizing(true)}
           />
         </div>
       </main>

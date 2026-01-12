@@ -9,11 +9,29 @@ interface ResponsePanelProps {
     status: number | null;
     time: number | null;
     activeEndpointLabel?: string;
+    onResizeStart: () => void;
 }
 
-export default function ResponsePanel({ response, status, time, activeEndpointLabel }: ResponsePanelProps) {
+export default function ResponsePanel({ response, status, time, activeEndpointLabel, onResizeStart }: ResponsePanelProps) {
     return (
-        <div className="w-full h-full flex flex-col bg-[#0c0c0e]">
+        <div className="w-full h-full flex flex-col bg-[#0c0c0e] relative group/terminal">
+            {/* Resize Handle - Top (Mobile) */}
+            <div
+                onMouseDown={onResizeStart}
+                onTouchStart={onResizeStart}
+                className="lg:hidden absolute -top-1 left-0 right-0 h-4 cursor-ns-resize z-50 flex items-center justify-center group"
+            >
+                <div className="w-12 h-1 bg-white/10 rounded-full group-hover:bg-accent-get/50 transition-colors" />
+            </div>
+
+            {/* Resize Handle - Left (Desktop) */}
+            <div
+                onMouseDown={onResizeStart}
+                className="hidden lg:block absolute top-0 -left-1 bottom-0 w-3 cursor-ew-resize z-50 group"
+            >
+                <div className="h-full w-[1px] bg-white/5 group-hover:bg-accent-get/50 transition-colors mx-auto" />
+            </div>
+
             <div className="p-3 px-4 border-b border-border flex items-center justify-between bg-card/30 backdrop-blur-md sticky top-0 z-10 h-14">
                 <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-accent-get shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
