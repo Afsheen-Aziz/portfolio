@@ -84,35 +84,41 @@ export default function Home() {
 
   // Resize handler for Terminal
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent | TouchEvent) => {
+    const handleMove = (e: MouseEvent | TouchEvent) => {
       if (!isResizing) return;
+
+      // Prevent browser scroll/overscroll while resizing
+      if (e.cancelable) e.preventDefault();
 
       const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
       const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
 
       if (window.innerWidth >= 1024) { // Desktop Width
         const newWidth = window.innerWidth - clientX;
-        setConsoleSize(prev => ({ ...prev, width: Math.max(300, Math.min(newWidth, window.innerWidth * 0.6)) }));
+        setConsoleSize(prev => ({ ...prev, width: Math.max(280, Math.min(newWidth, window.innerWidth * 0.7)) }));
       } else { // Mobile Height
         const newHeight = window.innerHeight - clientY;
-        setConsoleSize(prev => ({ ...prev, height: Math.max(150, Math.min(newHeight, window.innerHeight * 0.8)) }));
+        setConsoleSize(prev => ({ ...prev, height: Math.max(120, Math.min(newHeight, window.innerHeight * 0.85)) }));
       }
     };
 
-    const handleMouseUp = () => setIsResizing(false);
+    const handleEnd = () => setIsResizing(false);
 
     if (isResizing) {
-      window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('mouseup', handleMouseUp);
-      window.addEventListener('touchmove', handleMouseMove);
-      window.addEventListener('touchend', handleMouseUp);
+      document.body.style.cursor = window.innerWidth >= 1024 ? 'ew-resize' : 'ns-resize';
+      document.addEventListener('mousemove', handleMove, { passive: false });
+      document.addEventListener('mouseup', handleEnd);
+      document.addEventListener('touchmove', handleMove, { passive: false });
+      document.addEventListener('touchend', handleEnd);
+    } else {
+      document.body.style.cursor = 'default';
     }
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchmove', handleMouseMove);
-      window.removeEventListener('touchend', handleMouseUp);
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('mouseup', handleEnd);
+      document.removeEventListener('touchmove', handleMove);
+      document.removeEventListener('touchend', handleEnd);
     };
   }, [isResizing]);
 
@@ -171,7 +177,7 @@ export default function Home() {
             <div
               key={endpoint.id}
               id={endpoint.id}
-              className="min-h-[70vh] lg:min-h-screen border-b border-white/5 last:border-0 py-12 lg:py-20 scroll-mt-[100px] lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
+              className="min-h-[70vh] lg:min-h-screen border-b border-white/5 last:border-0 py-12 lg:py-20 scroll-mt-[120px] lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
             >
               <MainPanel
                 endpoint={endpoint}
@@ -185,10 +191,13 @@ export default function Home() {
         {/* Console / Response Panel */}
         <div
           style={{
-            height: window.innerWidth < 1024 ? `${consoleSize.height}px` : '100%',
-            width: window.innerWidth >= 1024 ? `${consoleSize.width}px` : '100%'
+            height: typeof window !== 'undefined' && window.innerWidth < 1024 ? `${consoleSize.height}px` : '100%',
+            width: typeof window !== 'undefined' && window.innerWidth >= 1024 ? `${consoleSize.width}px` : '100%'
           }}
-          className="relative border-t lg:border-t-0 lg:border-l border-white/5 bg-card/5 backdrop-blur-xl shrink-0 transition-[height,width] duration-75 ease-out"
+          className={cn(
+            "relative border-t lg:border-t-0 lg:border-l border-white/5 bg-card/5 backdrop-blur-xl shrink-0 z-[45]",
+            !isResizing && "transition-[height,width] duration-200"
+          )}
         >
           <ResponsePanel
             response={activeState.response}
