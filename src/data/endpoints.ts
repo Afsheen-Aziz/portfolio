@@ -351,12 +351,41 @@ export const endpoints: Endpoint[] = [
     path: '/credentials',
     method: 'GET',
     label: 'Certifications & Awards',
-    description: 'Retrieve certifications and honors.',
+    description: 'Retrieve certifications, hackathons, and academic achievements.',
     group: 'Credentials',
+    intro: {
+      title: "Credentials",
+      subtitle: "Certifications & Honors",
+      highlights: [
+        { label: "Scholarship", value: "EQS Women Scholarship 2024-25" },
+        { label: "Certification", value: "OCI 2025 AI Foundations Associate" },
+        { label: "MOOC", value: "NPTEL: Adv. Distributed Systems (Elite+Silver)" },
+        { label: "Hackathon", value: "HackGenAI Finalist (Top 25)" },
+        { label: "Membership", value: "ACES Tech Team Member" },
+        { label: "Professional", value: "IGBC Professional Member" },
+        { label: "Cloud", value: "Google Cloud: Prompt Design & Vertex AI" }
+      ]
+    },
     response: {
-      certification: "Oracle Cloud Infrastructure 2025 AI Foundations Associate",
-      hackathons: ["Global AI Hackathon - Finalist"],
-      scholarship: "STEM Excellence Scholarship"
+      "id": "afsheen_credentials",
+      "awards": {
+        "scholarship": "EQS Women Scholarship 2024-25",
+        "hackathons": [
+          "HackGenAI Finalist (Top 25)",
+          "TinkherHack 3.0 (Backend)",
+          "Starlet 3.0 (Frontend)"
+        ]
+      },
+      "certifications": [
+        "OCI 2025 AI Foundations Associate",
+        "NPTEL: Advanced Distributed Systems (Elite+Silver)",
+        "Google Cloud GenAI Professional",
+        "freeCodeCamp Web Design"
+      ],
+      "memberships": [
+        "Tech Team, ACES (CS Dept Club)",
+        "Member, Indian Green Building Council"
+      ]
     }
   },
   {
