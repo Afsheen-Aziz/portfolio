@@ -13,8 +13,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Afsheen | Backend Developer & AI Enthusiast",
-  description: "Interactive API Contract Portfolio of Afsheen, Backend Developer specializing in scalable systems and AI.",
+  title: "Afsheen Aziz | Portfolio",
+  description: "A personal portfolio showcasing projects, experience, and technical work.",
 };
 
 export default function RootLayout({
