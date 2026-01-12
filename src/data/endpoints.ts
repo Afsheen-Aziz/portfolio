@@ -154,24 +154,62 @@ export const endpoints: Endpoint[] = [
     }
   },
   {
-    id: 'get-project-chat',
-    path: '/projects/chat-api',
+    id: 'get-project-echonews',
+    path: '/projects/echonews',
     method: 'GET',
-    label: 'Skyline Chat Details',
-    description: 'Get details for the Chat API project.',
+    label: 'EchoNews Details',
+    description: 'AI Audio News Platform',
     group: 'Projects',
+    intro: {
+      title: "EchoNews",
+      subtitle: "AI Audio News Platform",
+      content: "AI-powered news aggregation and recommendation system using Gemini AI, providing personalized feeds, article summarization, trending news, and an interactive Streamlit interface.",
+      highlights: [
+        { label: "Core", value: "Python" },
+        { label: "AI", value: "Gemini / GPT" },
+        { label: "UI", value: "Streamlit" },
+        { label: "Audio", value: "Whisper & TTS" }
+      ]
+    },
     links: [
-      { label: 'View on GitHub', url: 'https://github.com/Afsheen-Aziz/chat-api', type: 'github' }
+      { label: 'View on GitHub', url: 'https://github.com/Afsheen-Aziz/EchoNews', type: 'github' }
     ],
     response: {
-      type: "Backend Service",
-      stack: ["Node.js", "WebSockets", "Redis"],
-      features: [
-        "Real-time messaging",
-        "Horizontal scaling",
-        "Presence tracking"
+      id: "ai-audio-news",
+      features: {
+        core: [
+          "AI audio news",
+          "Personalized feeds",
+          "Short news clips",
+          "Trending topics",
+          "Hyperlocal alerts"
+        ],
+        modes: [
+          "Aspirant mode",
+          "Exam revision"
+        ],
+        ai: [
+          "News summarization",
+          "Content recommendations"
+        ],
+        languages: [
+          "Malayalam",
+          "English"
+        ],
+        access: [
+          "Offline listening",
+          "Daily summaries",
+          "Smart quizzes"
+        ]
+      },
+      tech_stack: [
+        "Python",
+        "Streamlit",
+        "Gemini / GPT",
+        "Whisper",
+        "Cloud TTS"
       ],
-      github_url: "https://github.com/Afsheen-Aziz/chat-api"
+      link: "https://github.com/Afsheen-Aziz/EchoNews"
     }
   },
   {
