@@ -111,11 +111,11 @@ export const endpoints: Endpoint[] = [
   },
   {
     id: 'get-experience-unos',
-    path: '/experience/unos-ai',
+    path: '/internship/unos-ai',
     method: 'GET',
     label: 'Unos.ai Intern',
     description: 'Software Development Intern (Present)',
-    group: 'Experience',
+    group: 'Internships',
     intro: {
       title: "Unos.ai",
       subtitle: "Software Development Intern",
@@ -140,11 +140,11 @@ export const endpoints: Endpoint[] = [
   },
   {
     id: 'get-experience-cherrylabs',
-    path: '/experience/cherrylabs',
+    path: '/internship/cherrylabs',
     method: 'GET',
     label: 'Cherrylabs Intern',
     description: 'Cloud Intern (Jun 2025 - July 2025)',
-    group: 'Experience',
+    group: 'Internships',
     intro: {
       title: "Cherrylabs Technology",
       subtitle: "Cloud Intern",
@@ -170,11 +170,11 @@ export const endpoints: Endpoint[] = [
   },
   {
     id: 'get-experience-wrench',
-    path: '/experience/wrench',
+    path: '/internship/wrench',
     method: 'GET',
     label: 'Wrench Solutions Intern',
     description: 'AI/ML Intern (Apr 2024 - May 2024)',
-    group: 'Experience',
+    group: 'Internships',
     intro: {
       title: "Wrench Solutions R&D Centre",
       subtitle: "AI/ML Intern",
