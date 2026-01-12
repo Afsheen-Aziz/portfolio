@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Afsheen Aziz | API-First Portfolio
 
-## Getting Started
+A high-performance, interactive portfolio designed as a live API documentation service. This project showcases technical expertise by presenting professional experience, projects, and skills through executable endpoints and live data response payloads.
 
-First, run the development server:
+## 🚀 Key Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Live Endpoint Execution**: Every section is a functional API endpoint. Hit "Execute" to fetch real data about projects, experience, and academic background.
+- **Interactive Terminal**: A persistent, draggable, and resizable console (Response Panel) that allows users to view live JSON payloads. Supports touch-dragging on mobile and mouse-dragging on desktop.
+- **Dynamic Snap-Scroll Architecture**: Precision-engineered vertical snapping ensures each section is perfectly framed on both mobile and desktop screens.
+- **Magnetic UX & Micro-Animations**: Smooth transitions, hover-sensitive technical tables, and curated gradients create a premium developer-centric experience.
+- **Mobile-First Optimization**: Fully responsive with custom sticky headers, fixed-action buttons, and touch-optimized resize handles.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Core**: [Next.js 15+](https://nextjs.org) (App Router), [TypeScript](https://www.typescriptlang.org)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com) (Modern Dark/Grid aesthetics)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Utility**: [Lucide React](https://lucide.dev) (Icons), [PrismJS](https://prismjs.com) (Syntax highlighting)
+- **Infrastructure**: Vercel Edge Runtime
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📦 Getting Started
 
-## Learn More
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Afsheen-Aziz/portfolio.git
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+4. **Visit the app**: Open [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+## 🌐 Live Demo
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Visit the live portfolio at: [afsheenaziz.vercel.app](https://afsheenaziz.vercel.app/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Designed and developed by **Afsheen Aziz**. Optimized for developers, recruiters, and the technically curious.
