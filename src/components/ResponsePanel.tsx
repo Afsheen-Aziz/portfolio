@@ -15,21 +15,21 @@ interface ResponsePanelProps {
 export default function ResponsePanel({ response, status, time, activeEndpointLabel, onResizeStart }: ResponsePanelProps) {
     return (
         <div className="w-full h-full flex flex-col bg-[#0c0c0e] relative group/terminal">
-            {/* Resize Handle - Top (Mobile) */}
+            {/* Resize Handle - Top (Mobile) - Larger touch area */}
             <div
                 onMouseDown={onResizeStart}
                 onTouchStart={onResizeStart}
-                className="lg:hidden absolute -top-1 left-0 right-0 h-4 cursor-ns-resize z-50 flex items-center justify-center group"
+                className="lg:hidden absolute -top-4 left-0 right-0 h-8 cursor-ns-resize z-[100] flex items-center justify-center"
             >
-                <div className="w-12 h-1 bg-white/10 rounded-full group-hover:bg-accent-get/50 transition-colors" />
+                <div className="w-16 h-1.5 bg-white/20 rounded-full group-hover/terminal:bg-accent-get transition-colors shadow-lg" />
             </div>
 
             {/* Resize Handle - Left (Desktop) */}
             <div
                 onMouseDown={onResizeStart}
-                className="hidden lg:block absolute top-0 -left-1 bottom-0 w-3 cursor-ew-resize z-50 group"
+                className="hidden lg:block absolute top-0 -left-2 bottom-0 w-4 cursor-ew-resize z-[100] group"
             >
-                <div className="h-full w-[1px] bg-white/5 group-hover:bg-accent-get/50 transition-colors mx-auto" />
+                <div className="h-full w-[2px] bg-white/5 group-hover:bg-accent-get transition-colors mx-auto shadow-xl" />
             </div>
 
             <div className="p-3 px-4 border-b border-border flex items-center justify-between bg-card/30 backdrop-blur-md sticky top-0 z-10 h-14">
