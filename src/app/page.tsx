@@ -18,6 +18,19 @@ export default function Home() {
     isExecuting: boolean;
   }>>({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Terminal Resize State
+  const [consoleSize, setConsoleSize] = useState({ width: 450, height: 260 });
+  const [isResizing, setIsResizing] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+    // Adjust initial size based on actual window width
+    if (window.innerWidth < 1024) {
+      setConsoleSize(prev => ({ ...prev, height: 260 }));
+    }
+  }, []);
 
   // Initialize execution states
   useEffect(() => {
@@ -79,8 +92,7 @@ export default function Home() {
     setIsMobileMenuOpen(false);
   };
 
-  const [consoleSize, setConsoleSize] = useState({ width: 450, height: 300 }); // Desktop width, Mobile height
-  const [isResizing, setIsResizing] = useState(false);
+
 
   // Resize handler for Terminal
   useEffect(() => {
@@ -177,7 +189,7 @@ export default function Home() {
             <div
               key={endpoint.id}
               id={endpoint.id}
-              className="min-h-[70vh] lg:min-h-screen border-b border-white/5 last:border-0 py-12 lg:py-20 scroll-mt-[120px] lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
+              className="min-h-[85vh] lg:min-h-screen border-b border-white/5 last:border-0 py-20 lg:py-20 scroll-mt-[90px] lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
             >
               <MainPanel
                 endpoint={endpoint}
@@ -191,12 +203,12 @@ export default function Home() {
         {/* Console / Response Panel */}
         <div
           style={{
-            height: typeof window !== 'undefined' && window.innerWidth < 1024 ? `${consoleSize.height}px` : '100%',
-            width: typeof window !== 'undefined' && window.innerWidth >= 1024 ? `${consoleSize.width}px` : '100%'
+            height: isMounted && typeof window !== 'undefined' && window.innerWidth < 1024 ? `${consoleSize.height}px` : (isMounted ? '100%' : '260px'),
+            width: isMounted && typeof window !== 'undefined' && window.innerWidth >= 1024 ? `${consoleSize.width}px` : (isMounted ? '100%' : '450px')
           }}
           className={cn(
-            "relative border-t lg:border-t-0 lg:border-l border-white/5 bg-card/5 backdrop-blur-xl shrink-0 z-[45]",
-            !isResizing && "transition-[height,width] duration-200"
+            "relative border-t lg:border-t-0 lg:border-l border-white/5 bg-[#0c0c0e]/95 backdrop-blur-2xl shrink-0 z-[45] overflow-hidden",
+            !isResizing && "transition-[height,width] duration-300 ease-in-out"
           )}
         >
           <ResponsePanel
