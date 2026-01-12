@@ -119,7 +119,13 @@ export const endpoints: Endpoint[] = [
     intro: {
       title: "CodeVista",
       subtitle: "Coding Lab Management",
-      content: "An intelligent web-based platform designed to modernize coding lab workflows by combining automation, online code execution, visual learning tools, and AI-assisted evaluation for students and instructors."
+      content: "An intelligent web-based platform designed to modernize coding lab workflows by combining automation, online code execution, visual learning tools, and AI-assisted evaluation for students and instructors.",
+      highlights: [
+        { label: "Frontend", value: "Next.js & React" },
+        { label: "Backend", value: "Supabase" },
+        { label: "Engine", value: "Compiler API" },
+        { label: "Logic", value: "AI Evaluation" }
+      ]
     },
     links: [
       { label: 'View on GitHub', url: 'https://github.com/Afsheen-Aziz/lab_management_app', type: 'github' }
