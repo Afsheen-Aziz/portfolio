@@ -5,59 +5,95 @@ import Sidebar from '@/components/Sidebar';
 import MainPanel from '@/components/MainPanel';
 import ResponsePanel from '@/components/ResponsePanel';
 import { endpoints } from '@/data/endpoints';
-import { Menu, X, Terminal, Info } from 'lucide-react';
+import { Menu, X, Terminal, Info, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Home() {
-  const [selectedId, setSelectedId] = useState(endpoints[0].id);
-  const [response, setResponse] = useState<any | null>(null);
-  const [status, setStatus] = useState<number | null>(null);
-  const [time, setTime] = useState<number | null>(null);
-  const [isExecuting, setIsExecuting] = useState(false);
+  const [activeId, setActiveId] = useState(endpoints[0].id);
+  const [executionStates, setExecutionStates] = useState<Record<string, {
+    response: any | null;
+    status: number | null;
+    time: number | null;
+    isExecuting: boolean;
+  }>>({});
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const selectedEndpoint = endpoints.find((e) => e.id === selectedId)!;
+  // Initialize execution states
+  useEffect(() => {
+    const states: any = {};
+    endpoints.forEach(e => {
+      states[e.id] = { response: null, status: null, time: null, isExecuting: false };
+    });
+    setExecutionStates(states);
+  }, []);
 
-  // Function to simulate execution
-  const handleExecute = () => {
-    setIsExecuting(true);
-    setResponse(null);
-    setStatus(null);
-    setTime(null);
+  // Intersection Observer for active ID
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    endpoints.forEach((e) => {
+      const el = document.getElementById(e.id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleExecute = (id: string) => {
+    const endpoint = endpoints.find(e => e.id === id)!;
+
+    setExecutionStates(prev => ({
+      ...prev,
+      [id]: { ...prev[id], isExecuting: true, response: null, status: null, time: null }
+    }));
 
     setTimeout(() => {
-      setResponse(selectedEndpoint.response);
-      setStatus(200);
-      setTime(Math.floor(Math.random() * 200) + 50);
-      setIsExecuting(false);
+      setExecutionStates(prev => ({
+        ...prev,
+        [id]: {
+          ...prev[id],
+          response: endpoint.response,
+          status: 200,
+          time: Math.floor(Math.random() * 200) + 50,
+          isExecuting: false
+        }
+      }));
     }, 600);
   };
 
-  const handleSelect = (id: string) => {
-    setSelectedId(id);
-    // Clear previous response on select - user must execute to see the new one
-    setResponse(null);
-    setStatus(null);
-    setTime(null);
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
     setIsMobileMenuOpen(false);
   };
 
+  const activeState = executionStates[activeId] || { response: null, status: null, time: null, isExecuting: false };
+
   return (
     <div className="flex h-screen bg-background overflow-hidden relative">
-      {/* Hint logic removed for a cleaner experience as requested */}
-
       {/* Mobile Header */}
-      <div className="lg:hidden absolute top-0 left-0 right-0 h-16 border-b border-border bg-card/80 backdrop-blur-md z-50 flex items-center justify-between px-6">
+      <div className="lg:hidden absolute top-0 left-0 right-0 h-16 border-b border-white/5 bg-background/80 backdrop-blur-xl z-50 flex items-center justify-between px-6">
         <div className="flex items-center gap-2">
           <Terminal size={20} className="text-accent-get" />
-          <h1 className="text-lg font-bold">
-            Core<span className="text-accent-get">API</span>
+          <h1 className="text-lg font-bold tracking-tight">
+            Afsheen<span className="text-accent-get">API</span>
           </h1>
         </div>
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="p-2 hover:bg-slate-800 rounded-md transition-colors"
+          className="p-2 hover:bg-white/5 rounded-xl transition-colors"
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
@@ -65,7 +101,7 @@ export default function Home() {
 
       {/* Sidebar - Desktop */}
       <div className="hidden lg:block w-72 h-full flex-shrink-0">
-        <Sidebar selectedId={selectedId} onSelect={handleSelect} />
+        <Sidebar selectedId={activeId} onSelect={scrollToSection} />
       </div>
 
       {/* Sidebar - Mobile Overlay */}
@@ -86,22 +122,56 @@ export default function Home() {
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
               className="lg:hidden fixed inset-y-0 left-0 w-80 z-[70] bg-card"
             >
-              <Sidebar selectedId={selectedId} onSelect={handleSelect} />
+              <Sidebar selectedId={activeId} onSelect={scrollToSection} />
             </motion.div>
           </>
         )}
       </AnimatePresence>
 
       <main className="flex-1 flex flex-col lg:flex-row pt-16 lg:pt-0 overflow-hidden relative">
-        <MainPanel
-          endpoint={selectedEndpoint}
-          onExecute={handleExecute}
-          isExecuting={isExecuting}
-        />
-        <div className="h-2/5 lg:h-full lg:w-[450px] border-t lg:border-t-0 lg:border-l border-border bg-card/10 backdrop-blur-sm">
-          <ResponsePanel response={response} status={status} time={time} />
+        <div className="flex-1 overflow-y-auto scroll-smooth scrollbar-hide pb-32">
+          {endpoints.map((endpoint) => (
+            <div key={endpoint.id} id={endpoint.id} className="min-h-fit border-b border-white/5 last:border-0 py-12 lg:py-20 scroll-mt-16 lg:scroll-mt-0">
+              <MainPanel
+                endpoint={endpoint}
+                onExecute={() => handleExecute(endpoint.id)}
+                isExecuting={executionStates[endpoint.id]?.isExecuting ?? false}
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Console / Response Panel */}
+        <div className="h-[40vh] lg:h-full lg:w-[450px] border-t lg:border-t-0 lg:border-l border-white/5 bg-card/5 backdrop-blur-xl shrink-0">
+          <ResponsePanel
+            response={activeState.response}
+            status={activeState.status}
+            time={activeState.time}
+            activeEndpointLabel={endpoints.find(e => e.id === activeId)?.label}
+          />
         </div>
       </main>
+
+      {/* Global Mobile Sticky Execute Button */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 p-3 bg-background/80 backdrop-blur-xl border-t border-white/5 z-[40]">
+        <button
+          onClick={() => handleExecute(activeId)}
+          disabled={executionStates[activeId]?.isExecuting}
+          className={cn(
+            "w-full flex items-center justify-center gap-2.5 py-3 rounded-xl font-bold text-sm transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed shadow-xl shadow-accent-get/10",
+            endpoints.find(e => e.id === activeId)?.method === 'GET'
+              ? "bg-accent-get text-white"
+              : "bg-accent-post text-white"
+          )}
+        >
+          {executionStates[activeId]?.isExecuting ? (
+            <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+          ) : (
+            <Play className="w-4 h-4 fill-current" />
+          )}
+          {executionStates[activeId]?.isExecuting ? 'Requesting...' : 'Execute Full Endpoint'}
+        </button>
+      </div>
     </div>
   );
 }

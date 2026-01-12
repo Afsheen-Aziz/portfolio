@@ -8,16 +8,23 @@ interface ResponsePanelProps {
     response: any | null;
     status: number | null;
     time: number | null;
+    activeEndpointLabel?: string;
 }
 
-export default function ResponsePanel({ response, status, time }: ResponsePanelProps) {
+export default function ResponsePanel({ response, status, time, activeEndpointLabel }: ResponsePanelProps) {
     return (
         <div className="w-full h-full flex flex-col bg-[#0c0c0e]">
             <div className="p-3 px-4 border-b border-border flex items-center justify-between bg-card/30 backdrop-blur-md sticky top-0 z-10 h-14">
                 <div className="flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-accent-get shadow-[0_0_8px_rgba(59,130,246,0.5)]" />
-                    <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">
+                    <h3 className="text-[9px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-2">
                         Response Payload
+                        {activeEndpointLabel && (
+                            <>
+                                <span className="text-slate-700">/</span>
+                                <span className="text-accent-get normal-case">{activeEndpointLabel}</span>
+                            </>
+                        )}
                     </h3>
                 </div>
                 {status && (
