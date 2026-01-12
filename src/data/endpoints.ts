@@ -119,19 +119,22 @@ export const endpoints: Endpoint[] = [
     intro: {
       title: "Unos.ai",
       subtitle: "Software Development Intern",
-      content: "Building core modules for Hospital Management Systems, integrating ERP frameworks, and exploring ML workflows for healthcare data.",
+      content: "Building a full-stack Hospital Management System using React.js and Frappe. Designed responsive UI and integrated RESTful APIs for patient, staff, and record management.",
       highlights: [
-        { label: "Frontend", value: "React.js" },
-        { label: "Platform", value: "Frappe / ERPNext" },
-        { label: "Research", value: "Grad-CAM & NLP" },
-        { label: "Stack", value: "Python & Scikit-learn" }
+        { label: "Role", value: "Software Development Intern" },
+        { label: "Project", value: "Startup Project" },
+        { label: "Status", value: "Jul 2025 - Present" },
+        { label: "Location", value: "Remote / India" }
       ]
     },
     response: {
       role: "Software Development Intern",
+      company: "Unos.ai (Startup Project)",
       period: "July 2025 - Present",
+      location: "Remote / India",
       contributions: [
-        "Built React modules for Patient and Vital Signs management in a Hospital Management System",
+        "Building a full-stack Hospital Management System using React.js and Frappe",
+        "Designed responsive UI and integrated RESTful APIs for patient, staff, and record management",
         "Connected Frappe REST APIs with custom ERPNext logic",
         "Researched Grad-CAM and NLP for medical entity extraction"
       ],
@@ -143,27 +146,29 @@ export const endpoints: Endpoint[] = [
     path: '/internship/cherrylabs',
     method: 'GET',
     label: 'Cherrylabs Intern',
-    description: 'Cloud Intern (Jun 2025 - July 2025)',
+    description: 'Cloud Intern (Jun 2025 - Present)',
     group: 'Internships',
     intro: {
-      title: "Cherrylabs Technology",
+      title: "Cherrylabs Technology Pvt Ltd",
       subtitle: "Cloud Intern",
-      content: "Focused on AWS infrastructure management, security, and cloud automation.",
+      content: "Worked with core AWS services (EC2, S3, IAM) for deployment and security. Automated cloud tasks via AWS CLI and applied virtualization and scalability principles.",
       highlights: [
-        { label: "Cloud", value: "AWS" },
-        { label: "Compute", value: "EC2" },
-        { label: "Storage", value: "S3" },
-        { label: "Security", value: "IAM & MFA" }
+        { label: "Role", value: "Cloud Intern" },
+        { label: "Company", value: "Cherrylabs Technology Pvt Ltd" },
+        { label: "Status", value: "Jun 2025 - Ongoing" },
+        { label: "Location", value: "Bangalore, India" }
       ]
     },
     response: {
       role: "Cloud Intern",
-      period: "Jun 2025 - July 2025",
+      company: "Cherrylabs Technology Pvt Ltd",
+      period: "Jun 2025 - Ongoing",
+      location: "Bangalore, India",
       contributions: [
-        "Learned and used core AWS services (EC2, S3, IAM)",
+        "Worked with core AWS services (EC2, S3, IAM) for deployment and security",
+        "Automated cloud tasks via AWS CLI and applied virtualization and scalability principles",
         "Configured IAM users, roles, policies, and MFA",
-        "Deployed static websites and managed S3 storage",
-        "Automated tasks and access using AWS CLI"
+        "Managed S3 storage and static website deployments"
       ],
       tech_stack: ["AWS", "EC2", "S3", "IAM", "AWS CLI"]
     }
@@ -178,21 +183,24 @@ export const endpoints: Endpoint[] = [
     intro: {
       title: "Wrench Solutions R&D Centre",
       subtitle: "AI/ML Intern",
-      content: "Pioneered automated construction progress monitoring using deep learning models.",
+      content: "Developed an AI model for automated construction progress forecasting using YOLO. Processed datasets with OpenCV and deployed via a Flask web app.",
       highlights: [
-        { label: "Model", value: "YOLO" },
-        { label: "Vision", value: "OpenCV" },
-        { label: "Server", value: "Flask" },
-        { label: "Core", value: "Python" }
+        { label: "Role", value: "AI/ML Intern" },
+        { label: "Company", value: "Wrench Solutions R&D Centre" },
+        { label: "Period", value: "Apr 2024 - May 2024" },
+        { label: "Location", value: "Kochi, India" },
+        { label: "Tech", value: "YOLO, OpenCV, Flask" }
       ]
     },
     response: {
       role: "AI/ML Intern",
+      company: "Wrench Solutions R&D Centre",
       period: "Apr 2024 - May 2024",
+      location: "Kochi, India",
       contributions: [
-        "Built AI model for automated construction progress forecasting (YOLO)",
-        "Created and annotated custom construction datasets for training",
-        "Processed data with OpenCV and deployed via Flask web app"
+        "Developed an AI model for automated construction progress forecasting using YOLO",
+        "Processed datasets with OpenCV and deployed via a Flask web app",
+        "Created and annotated custom construction datasets for training"
       ],
       tech_stack: ["Python", "YOLO", "OpenCV", "Flask"]
     }

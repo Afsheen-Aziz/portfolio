@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Prism from 'prismjs';
 import 'prismjs/components/prism-json';
-import '@/app/globals.css'; // Ensure styles are available
 import { Copy, Check } from 'lucide-react';
 
 interface JSONHighlighterProps {
