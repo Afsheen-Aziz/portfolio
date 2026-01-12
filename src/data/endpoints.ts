@@ -114,11 +114,11 @@ export const endpoints: Endpoint[] = [
     path: '/projects/codevista',
     method: 'GET',
     label: 'CodeVista Details',
-    description: 'Smart Lab Management.',
+    description: 'Coding Lab Management.',
     group: 'Projects',
     intro: {
       title: "CodeVista",
-      subtitle: "Smart Lab Management",
+      subtitle: "Coding Lab Management",
       content: "An intelligent web-based platform designed to modernize coding lab workflows by combining automation, online code execution, visual learning tools, and AI-assisted evaluation for students and instructors."
     },
     links: [
