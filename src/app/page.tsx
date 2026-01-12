@@ -189,7 +189,7 @@ export default function Home() {
             <div
               key={endpoint.id}
               id={endpoint.id}
-              className="min-h-[85vh] lg:min-h-screen border-b border-white/5 last:border-0 py-20 lg:py-20 scroll-mt-[90px] lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
+              className="min-h-[85vh] lg:min-h-screen border-b border-white/5 last:border-0 py-10 lg:py-20 scroll-mt-[64px] lg:scroll-mt-0 snap-start snap-always flex flex-col justify-center"
             >
               <MainPanel
                 endpoint={endpoint}
@@ -222,7 +222,7 @@ export default function Home() {
       </main>
 
       {/* Global Mobile Sticky Execute Button */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 p-3 bg-background/80 backdrop-blur-xl border-t border-white/5 z-[40]">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 p-3 bg-background/80 backdrop-blur-xl border-t border-white/5 z-[60]">
         <button
           onClick={() => handleExecute(activeId)}
           disabled={executionStates[activeId]?.isExecuting}
