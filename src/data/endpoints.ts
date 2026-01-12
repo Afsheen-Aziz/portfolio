@@ -110,6 +110,94 @@ export const endpoints: Endpoint[] = [
     }
   },
   {
+    id: 'get-experience-unos',
+    path: '/experience/unos-ai',
+    method: 'GET',
+    label: 'Unos.ai Intern',
+    description: 'Software Development Intern (Present)',
+    group: 'Experience',
+    intro: {
+      title: "Unos.ai",
+      subtitle: "Software Development Intern",
+      content: "Building core modules for Hospital Management Systems and integrating complex ERP frameworks.",
+      highlights: [
+        { label: "Frontend", value: "React.js" },
+        { label: "Platform", value: "Frappe / ERPNext" },
+        { label: "Research", value: "Grad-CAM & NLP" },
+        { label: "Stack", value: "Python & Scikit-learn" }
+      ]
+    },
+    response: {
+      role: "Software Development Intern",
+      period: "July 2025 - Present",
+      contributions: [
+        "Built React modules for Patient and Vital Signs management in a Hospital Management System",
+        "Connected Frappe REST APIs with custom ERPNext logic",
+        "Researched Grad-CAM and NLP for medical entity extraction"
+      ],
+      tech_stack: ["React.js", "Frappe", "Python", "Scikit-learn"]
+    }
+  },
+  {
+    id: 'get-experience-cherrylabs',
+    path: '/experience/cherrylabs',
+    method: 'GET',
+    label: 'Cherrylabs Intern',
+    description: 'Cloud Intern (Jun 2025 - July 2025)',
+    group: 'Experience',
+    intro: {
+      title: "Cherrylabs Technology",
+      subtitle: "Cloud Intern",
+      content: "Focused on AWS infrastructure management, security, and cloud automation.",
+      highlights: [
+        { label: "Cloud", value: "AWS" },
+        { label: "Compute", value: "EC2" },
+        { label: "Storage", value: "S3" },
+        { label: "Security", value: "IAM & MFA" }
+      ]
+    },
+    response: {
+      role: "Cloud Intern",
+      period: "Jun 2025 - July 2025",
+      contributions: [
+        "Learned and used core AWS services (EC2, S3, IAM)",
+        "Configured IAM users, roles, policies, and MFA",
+        "Deployed static websites and managed S3 storage",
+        "Automated tasks and access using AWS CLI"
+      ],
+      tech_stack: ["AWS", "EC2", "S3", "IAM", "AWS CLI"]
+    }
+  },
+  {
+    id: 'get-experience-wrench',
+    path: '/experience/wrench',
+    method: 'GET',
+    label: 'Wrench Solutions Intern',
+    description: 'AI/ML Intern (Apr 2024 - May 2024)',
+    group: 'Experience',
+    intro: {
+      title: "Wrench Solutions R&D Centre",
+      subtitle: "AI/ML Intern",
+      content: "Pioneered automated construction progress monitoring using deep learning models.",
+      highlights: [
+        { label: "Model", value: "YOLO" },
+        { label: "Vision", value: "OpenCV" },
+        { label: "Server", value: "Flask" },
+        { label: "Core", value: "Python" }
+      ]
+    },
+    response: {
+      role: "AI/ML Intern",
+      period: "Apr 2024 - May 2024",
+      contributions: [
+        "Built AI model for automated construction progress forecasting (YOLO)",
+        "Created and annotated custom construction datasets for training",
+        "Processed data with OpenCV and deployed via Flask web app"
+      ],
+      tech_stack: ["Python", "YOLO", "OpenCV", "Flask"]
+    }
+  },
+  {
     id: 'get-project-codevista',
     path: '/projects/codevista',
     method: 'GET',
