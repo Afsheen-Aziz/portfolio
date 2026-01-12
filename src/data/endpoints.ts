@@ -219,22 +219,43 @@ export const endpoints: Endpoint[] = [
     }
   },
   {
-    id: 'get-project-sentiment',
-    path: '/projects/sentiment-analyzer',
+    id: 'get-project-constructvision',
+    path: '/projects/constructvision',
     method: 'GET',
-    label: 'Sense-ML Details',
-    description: 'Get details for the Sentiment Analyzer project.',
+    label: 'ConstructVision Details',
+    description: 'AI Construction Forecaster',
     group: 'Projects',
+    intro: {
+      title: "ConstructVision",
+      subtitle: "AI Construction Forecaster",
+      content: "An AI-powered monitoring system that utilizes YOLOv8 to track and forecast construction progress through real-time image analysis. It automates the transition from raw site data to quantifiable progress metrics.",
+      highlights: [
+        { label: "Core", value: "Python" },
+        { label: "Vision", value: "OpenCV" },
+        { label: "Model", value: "YOLOv8" },
+        { label: "Server", value: "Flask" }
+      ]
+    },
     links: [
-      { label: 'View Code on GitHub', url: 'https://github.com/Afsheen-Aziz/sentiment-analyzer', type: 'github' }
+      { label: 'View on GitHub', url: 'https://github.com/Afsheen-Aziz/ConstructVision', type: 'github' }
     ],
     response: {
-      type: "Machine Learning",
-      model: "Logistic Regression",
-      dataset: "IMDb Reviews",
-      accuracy: "87%",
-      deployment: "Inference via FastAPI",
-      github_url: "https://github.com/Afsheen-Aziz/sentiment-analyzer"
+      id: "constructvision",
+      status: "deployed",
+      stack: ["Python", "YOLOv5", "OpenCV", "Flask"],
+      project_lifecycle: {
+        "01_data": "Stage-labeled construction dataset",
+        "02_preprocess": "OpenCV image standardization",
+        "03_model": "Fine-tuned YOLOv5 detection",
+        "04_inference": "Flask-based prediction engine",
+        "05_analytics": "Stage-wise progress tracking"
+      },
+      outputs: [
+        "Web image upload",
+        "Accurate stage detection",
+        "Visualized progress results"
+      ],
+      repo: "github.com/Afsheen-Aziz/ConstructVision"
     }
   },
   {
